@@ -20,7 +20,7 @@
     <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="bg-secondary" style="min-height: 100vh;">
         <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -37,7 +37,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav txt-right" style="margin-right:0px">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))

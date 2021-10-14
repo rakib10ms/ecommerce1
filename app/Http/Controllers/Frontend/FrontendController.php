@@ -28,4 +28,18 @@ class FrontendController extends Controller
     }
 
 
+      public function viewCategory($slug){
+
+
+        $allCategories=Category::all();
+
+        $category_slug=Category::where('slug',$slug)->first();
+        $viewProducts=Product::where('cate_id',$category_slug->id)->get();
+        // dd($viewProducts);
+         
+        return view('frontend.view-category',compact('allCategories','viewProducts'));
+
+    }
+
+
 }

@@ -75,38 +75,53 @@
             <div class="logo">
               <a href="index.html"><img src="{{asset('frontend/images/logo.png')}}" alt="logo"></a>
             </div>
+
+
             <!--/ End Logo -->
             <!-- Search Form -->
-            <div class="search-top">
-              <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
+            <!-- <div class="search-top">
+              <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div> -->
               <!-- Search Form -->
-              <div class="search-top">
+              <!-- <div class="search-top">
                 <form class="search-form">
                   <input type="text" placeholder="Search here..." name="search">
                   <button value="search" type="submit"><i class="ti-search"></i></button>
                 </form>
-              </div>
+              </div> -->
               <!--/ End Search Form -->
-            </div>
-            <!--/ End Search Form -->
-            <div class="mobile-nav"></div>
+<!--             </div>
+ -->            <!--/ End Search Form -->
+
+
+
+            <div class="mobile-nav"></div>       
           </div>
+
+
+
+
           <div class="col-lg-8 col-md-7 col-12">
             <div class="search-bar-top">
+                <form action="{{route('search.index')}}" method="GET">
+
               <div class="search-bar">
                 <select>
                   <option selected="selected">All Category</option>
                   @foreach($allCategories as $category)
-                  <option value="{{$category->id}}">{{$category->name}}</option>
+                  <option value="{{$category->id}}" name='cate_name'>{{$category->name}}</option>
                   @endforeach
                 </select>
-                <form>
-                  <input name="search" placeholder="Search Products Here....." type="search">
-                  <button class="btnn"><i class="ti-search"></i></button>
-                </form>
+                  <div>
+                  <input name="product" placeholder="Search Products Here....." type="search">
+                  <button class="btnn" type="submit"><i class="ti-search"></i></button>
+                </div>
               </div>
+            </form>
             </div>
           </div>
+
+
+
           <div class="col-lg-2 col-md-3 col-12">
             <div class="right-bar">
               <!-- Search Form -->
@@ -143,7 +158,7 @@
                       <span>Total</span>
                       <span class="total-amount">$134.00</span>
                     </div>
-                    <a href="checkout.html" class="btn animate">Checkout</a>
+                    <a href="{{route('checkout')}}" class="btn animate">Checkout</a>
                   </div>
                 </div>
                 <!--/ End Shopping Item -->
@@ -221,17 +236,10 @@
                     </ul>
                   </li>
                    @foreach($allCategories as $category)
-                     <li><a href="{{$category->id}}">{{$category->name}}</a></li>
+                     <li><a href="{{route('view-category',$category->slug)}}">{{$category->name}}</a></li>
 
                   @endforeach
-                 <!--  <li><a href="#">accessories</a></li>
-                  <li><a href="#">top 100 offer</a></li>
-                  <li><a href="#">sunglass</a></li>
-                  <li><a href="#">watch</a></li>
-                  <li><a href="#">man’s product</a></li>
-                  <li><a href="#">ladies</a></li>
-                  <li><a href="#">westrn dress</a></li>
-                  <li><a href="#">denim </a></li> -->
+                
                 </ul>
               </div>
             </div>

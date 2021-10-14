@@ -63,9 +63,23 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
 
     Route::post('/all-subscriber/store', 'Admin\SubscriberController@store')->name('all-subscriber');
 
+  Route::get('/view-category/{slug}', 'Frontend\FrontendController@viewCategory')->name('view-category');
+
+
     
     Route::get('/contact-us', 'Frontend\ContactController@contactForm')->name('contact-us');
     Route::post('/contact-us/store', 'Frontend\ContactController@storeContactForm')->name('contact-us.store');
+
+
+    Route::get('/checkout', 'Frontend\CheckOutController@index')->name('checkout');
+
+
+
+    //search
+    Route::get('/search', 'Frontend\SearchController@index')->name('search.index');
+
+
+
 
 
 
