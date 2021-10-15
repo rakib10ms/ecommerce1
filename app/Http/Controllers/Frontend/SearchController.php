@@ -19,18 +19,17 @@ class SearchController extends Controller
         $query->where('name', 'like', '%' .$searchItem  . '%')
            ->orWhere('small_description', 'like', '%' . $searchItem. '%')
            ->orWhere('description', 'like', '%' . $searchItem. '%')
-           ->orWhere('meta_keywords', 'like', '%' . $searchItem . '%')
+           ->orWhere('meta_keywords', 'like', '%' . $searchItem . '%');
 
-      })
-     ->get();
+      })->get();
 
-       dd($filterData);
         $allCategories=Category::all();
-        return view('frontend.product-search',compact('allCategories'));
+        return view('frontend.product-search',compact('allCategories','filterData'));
     }
+  }
 
    
 
 
 
-}
+

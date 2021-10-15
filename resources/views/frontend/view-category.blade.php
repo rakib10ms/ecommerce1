@@ -255,7 +255,9 @@
                 <div class="tab-pane fade show active" id="man" role="tabpanel">
                   <div class="tab-single">
                     <div class="row">
-                      @foreach($viewProducts as $product)
+
+                      @if(count($viewProducts)>0)
+                           @foreach($viewProducts as $product)
                       <div class="col-xl-3 col-lg-4 col-md-4 col-12">
                         <div class="single-product">
                           <div class="product-img">
@@ -284,9 +286,21 @@
                       </div>
                       @endforeach
 
+                      @else
+                        <div class="alert alert-success" role="alert">
+                          No Product available here!
+                        </div>
+                      @endif
+    
                     </div>
                   </div>
+                </div>  
+                 </div>
+                  </div>
                 </div>
+              </div>
+            </div>
+
                 <!--/ End Single Tab -->
 
 

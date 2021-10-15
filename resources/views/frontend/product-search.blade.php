@@ -77,34 +77,40 @@
             </div>
             <!--/ End Logo -->
             <!-- Search Form -->
-            <div class="search-top">
-              <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
+            <!-- <div class="search-top">
+              <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div> -->
               <!-- Search Form -->
-              <div class="search-top">
+             <!--  <div class="search-top">
                 <form class="search-form">
                   <input type="text" placeholder="Search here..." name="search">
                   <button value="search" type="submit"><i class="ti-search"></i></button>
                 </form>
-              </div>
+              </div> -->
               <!--/ End Search Form -->
-            </div>
-            <!--/ End Search Form -->
+<!--             </div>
+ -->            <!--/ End Search Form -->
             <div class="mobile-nav"></div>
           </div>
+
+
+          
           <div class="col-lg-8 col-md-7 col-12">
             <div class="search-bar-top">
+             <form action="{{route('search.index')}}" method="GET">
+
               <div class="search-bar">
                 <select>
                   <option selected="selected">All Category</option>
                   @foreach($allCategories as $category)
-                  <option value="{{$category->id}}">{{$category->name}}</option>
+                  <option value="{{$category->id}}" name='cate_name'>{{$category->name}}</option>
                   @endforeach
                 </select>
-                <form>
-                  <input name="search" placeholder="Search Products Here....." type="search">
-                  <button class="btnn"><i class="ti-search"></i></button>
-                </form>
+                  <div>
+                  <input name="product" placeholder="Search Products Here....." type="search">
+                  <button class="btnn" type="submit"><i class="ti-search"></i></button>
+                </div>
               </div>
+            </form>
             </div>
           </div>
           <div class="col-lg-2 col-md-3 col-12">
@@ -242,7 +248,7 @@
         <div class="row">
           <div class="col-12">
             <div class="section-title">
-              <h2>All Products</h2>
+              <h2>Search Results</h2>
             </div>
           </div>
         </div>
@@ -252,15 +258,18 @@
             
               <div class="tab-content" id="myTabContent">
                 <!-- Start Single Tab -->
+                 
                 <div class="tab-pane fade show active" id="man" role="tabpanel">
+                
                   <div class="tab-single">
                     <div class="row">
+                       @foreach($filterData as $item)
                       <div class="col-xl-3 col-lg-4 col-md-4 col-12">
                         <div class="single-product">
                           <div class="product-img">
                             <a href="product-details.html">
-                              <img class="default-img" src="" alt="#">
-                              <img class="hover-img" src="" alt="#">
+                              <img class="default-img" src="{{asset('assets/uploads/products/' .$item->image)}}" alt="#">
+                              <img class="hover-img" src="{{asset('assets/uploads/products/' .$item->image)}}" alt="#">
                             </a>
                             <div class="button-head">
                               <div class="product-action">
@@ -274,17 +283,24 @@
                             </div>
                           </div>
                           <div class="product-content">
-                            <h3><a href="product-details.html"></a></h3>
+                            <h3><a href="product-details.html">{{$item->small_description}}</a></h3>
                             <div class="product-price">
-                              <span> </span>
+                              <span> {{$item->original_price}}</span>
                             </div>
                           </div>
                         </div>
                       </div>
- 
+                      @endforeach
                     </div>
                   </div>
+              
                 </div>
+              </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
                 <!--/ End Single Tab -->
 
 
