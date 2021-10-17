@@ -1214,14 +1214,16 @@ Version:1.0
 }
 .hero-slider .single-slider {
 	height: auto;
-	background-image: url('https://via.placeholder.com/1900x700');
+	background-image: url('https://cdn.pixabay.com/photo/2021/07/10/15/45/online-shop-6401739_960_720.png');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
     height: 510px;
+      position: relative;
 }
+
 .hero-slider .text-inner {
-	
+
 }
 .hero-slider .hero-text {
 	padding: 0 30px;

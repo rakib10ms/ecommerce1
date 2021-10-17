@@ -73,7 +73,7 @@
           <div class="col-lg-2 col-md-2 col-12">
             <!-- Logo -->
             <div class="logo">
-              <a href="index.html"><img src="{{asset('frontend/images/logo.png')}}" alt="logo"></a>
+              <a href="{{url('/')}}"><img src="{{asset('frontend/images/logo.png')}}" alt="logo"></a>
             </div>
 
 
@@ -251,7 +251,7 @@
                     <div class="nav-inner"> 
                       <ul class="nav main-menu menu navbar-nav">
                           <li class="active"><a href="#">Home</a></li>
-                          <li><a href="#">Product</a></li>                        
+                          <li><a href="{{route('all-product')}}">Product</a></li>                        
                           <li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
                             <ul class="dropdown">
                               <li><a href="cart.html">Cart</a></li>
@@ -316,9 +316,9 @@
           <div class="col-lg-9 offset-lg-3 col-12">
             <div class="text-inner">
               <div class="row">
-                <div class="col-lg-7 col-12">
-                  <div class="hero-text">
-                    <h1><span>UP TO 50% OFF </span>Shirt For Man</h1>
+                <div class="col-lg-7 col-12 rounded" >
+                  <div class="hero-text bg-light rounded p-2 shadow-lg p-3 mb-5 bg-white ">
+                    <h1 class=""><span>UP TO 50% OFF </span>Shirt For Man</h1>
                     <p>Maboriosam in a nesciung eget magnae <br> dapibus disting tloctio in the find it pereri <br> odiy maboriosm.</p>
                     <div class="button">
                       <a href="#" class="btn">Shop Now!</a>
@@ -336,48 +336,7 @@
   <!--/ End Slider Area -->
   
   <!-- Start Small Banner  -->
-  <section class="small-banner section">
-    <div class="container-fluid">
-      <div class="row">
-        <!-- Single Banner  -->
-        <div class="col-lg-4 col-md-6 col-12">
-          <div class="single-banner">
-            <img src="https://via.placeholder.com/600x370" alt="#">
-            <div class="content">
-              <p>Man's Collectons</p>
-              <h3>Summer travel <br> collection</h3>
-              <a href="#">Discover Now</a>
-            </div>
-          </div>
-        </div>
-        <!-- /End Single Banner  -->
-        <!-- Single Banner  -->
-        <div class="col-lg-4 col-md-6 col-12">
-          <div class="single-banner">
-            <img src="https://via.placeholder.com/600x370" alt="#">
-            <div class="content">
-              <p>Bag Collectons</p>
-              <h3>Awesome Bag <br> 2020</h3>
-              <a href="#">Shop Now</a>
-            </div>
-          </div>
-        </div>
-        <!-- /End Single Banner  -->
-        <!-- Single Banner  -->
-        <div class="col-lg-4 col-12">
-          <div class="single-banner tab-height">
-            <img src="https://via.placeholder.com/600x370" alt="#">
-            <div class="content">
-              <p>Flash Sale</p>
-              <h3>Mid Season <br> Up to <span>40%</span> Off</h3>
-              <a href="#">Discover Now</a>
-            </div>
-          </div>
-        </div>
-        <!-- /End Single Banner  -->
-      </div>
-    </div>
-  </section>
+
   <!-- End Small Banner -->
   
   <!-- Start Product Area -->
@@ -1743,36 +1702,7 @@
   <!-- End Product Area -->
   
   <!-- Start Midium Banner  -->
-  <section class="midium-banner">
-    <div class="container">
-      <div class="row">
-        <!-- Single Banner  -->
-        <div class="col-lg-6 col-md-6 col-12">
-          <div class="single-banner">
-            <img src="https://via.placeholder.com/600x370" alt="#">
-            <div class="content">
-              <p>Man's Collectons</p>
-              <h3>Man's items <br>Up to<span> 50%</span></h3>
-              <a href="#">Shop Now</a>
-            </div>
-          </div>
-        </div>
-        <!-- /End Single Banner  -->
-        <!-- Single Banner  -->
-        <div class="col-lg-6 col-md-6 col-12">
-          <div class="single-banner">
-            <img src="https://via.placeholder.com/600x370" alt="#">
-            <div class="content">
-              <p>shoes women</p>
-              <h3>mid season <br> up to <span>70%</span></h3>
-              <a href="#" class="btn">Shop Now</a>
-            </div>
-          </div>
-        </div>
-        <!-- /End Single Banner  -->
-      </div>
-    </div>
-  </section>
+
   <!-- End Midium Banner -->
   
   <!-- Start Most Popular -->
@@ -1791,9 +1721,11 @@
             <!-- Start Single Product -->
 
             @foreach($hotitems as $item)
+        
             <div class="single-product">
               <div class="product-img">
-                <a href="product-details.html">
+                  <a href="{{route('product-details',$item->slug)}}">
+
                   <img class="default-img" src="{{asset('assets/uploads/hot-item/'.$item->image)}}"  alt="#">
                   <img class="hover-img"src="{{asset('assets/uploads/hot-item/'.$item->image)}}" alt="#">
                       @if ($item->status==1)
@@ -1803,7 +1735,7 @@
                       @else
 
                       @endif
-                </a>
+
                 <div class="button-head">
                   <div class="product-action">
                     <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
@@ -1816,13 +1748,14 @@
                 </div>
               </div>
               <div class="product-content">
-                <h3><a href="product-details.html">{{$item->small_description}}</a></h3>
+                <h3><a href="">{{$item->small_description}}</a></h3>
                 <div class="product-price">
                   <span class="old">{{$item->original_price}}</span>
                   <span>{{$item->selling_price}}</span>
                 </div>
               </div>
             </div>
+          </a>
             @endforeach
 
             <!-- End Single Product -->
@@ -1929,12 +1862,14 @@
           </div>
           <!-- Start Single List  -->
           @foreach($on_sale as $item) 
+         
           <div class="single-list">
+              <a href="{{route('product-details',$item->slug)}}">
             <div class="row">
               <div class="col-lg-6 col-md-6 col-12">
                 <div class="list-image overlay">
                   <img src="{{asset('assets/uploads/best_products/'.$item->image)}}" alt="#">
-                  <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
+                  <a href="" class="buy"><i class="fa fa-shopping-bag"></i></a>
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-12 no-padding">
@@ -1944,46 +1879,12 @@
                 </div>
               </div>
             </div>
+            </a>
           </div>
+        
+
           @endforeach
-          
-          <!-- End Single List  -->
-          <!-- Start Single List  -->
-   <!--        <div class="single-list">
-            <div class="row">
-              <div class="col-lg-6 col-md-6 col-12">
-                <div class="list-image overlay">
-                  <img src="https://via.placeholder.com/115x140" alt="#">
-                  <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-12 no-padding">
-                <div class="content">
-                  <h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-                  <p class="price with-discount">$44</p>
-                </div>
-              </div>
-            </div>
-          </div> -->
-          <!-- End Single List  -->
-          <!-- Start Single List  -->
- <!--          <div class="single-list">
-            <div class="row">
-              <div class="col-lg-6 col-md-6 col-12">
-                <div class="list-image overlay">
-                  <img src="https://via.placeholder.com/115x140" alt="#">
-                  <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-12 no-padding">
-                <div class="content">
-                  <h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-                  <p class="price with-discount">$89</p>
-                </div>
-              </div>
-            </div>
-          </div> -->
-          <!-- End Single List  -->
+        
         </div>
 
         <div class="col-lg-4 col-md-6 col-12">

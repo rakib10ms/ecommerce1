@@ -78,6 +78,21 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
     //search
     Route::get('/search', 'Frontend\SearchController@index')->name('search.index');
 
+    //product-details
+    Route::get('/product-details/{slug}', 'Frontend\FrontendController@productDetails')->name('product-details');
+
+
+
+ //all-producuts
+ Route::get('/all-product', 'Frontend\FrontendController@allProduct')->name('all-product');
+
+
+
+
+ Route::post('/add-to-cart', 'Frontend\CartController@addProduct');
+
+
+
 
 
 

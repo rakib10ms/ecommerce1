@@ -41,5 +41,18 @@ class FrontendController extends Controller
 
     }
 
+    public function productDetails($slug){
+
+      $productDetails=HotItem::where('slug',$slug)->first();
+      // dd($productDetails);
+      return view('frontend.product-details',compact('productDetails'));
+    }
+
+
+    public function allProduct(){
+      $allProduct=Product::all();
+      // dd($allProduct);
+      return view('frontend.allProduct',compact('allProduct'));
+    }
 
 }
