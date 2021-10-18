@@ -92,23 +92,8 @@
 							<!--/ End Search Form -->
 							<div class="mobile-nav"></div>
 						</div>
-						<div class="col-lg-8 col-md-7 col-12">
-							<div class="search-bar-top">
-								<div class="search-bar">
-									<select>
-										<option selected="selected">All Category</option>
-										<option>watch</option>
-										<option>mobile</option>
-										<option>kid’s item</option>
-									</select>
-									<form>
-										<input name="search" placeholder="Search Products Here....." type="search">
-										<button class="btnn"><i class="ti-search"></i></button>
-									</form>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-3 col-12">
+				
+						<div class="col-lg-10 col-md-3 col-12">
 							<div class="right-bar">
 								<!-- Search Form -->
 								<div class="sinlge-bar">
@@ -198,25 +183,37 @@
 		<!--/ End Header -->
 	
 	<!-- Breadcrumbs -->
-	<div class="breadcrumbs">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div class="bread-inner">
-						<ul class="bread-list">
-							<li><a href="{{url('/')}}">Home<i class="ti-arrow-right"></i></a></li>
-							<li class="active"><a href="blog-single.html">Contact</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
 	<!-- End Breadcrumbs -->
   
 
 
+    <div class="col-md-12  m-4">
+							<div class="search-bar-top">
+								<div class="search-bar">
+									<form action="" method="GET"  class="d-flex">
+									<select name="cate_id">
+										<option selected="selected">All Category</option>
+										@foreach($allCategories as $category)
+										<option value="{{$category->id}}">{{$category->name}}</option>
+									  @endforeach
+									</select>
 
+											<select name="price">
+										<option selected="selected">Price</option>
+										<option value="onetofive">100-500</option>
+										<option value="fivetoten">500-1000</option>
+										<option value="tentofiften">1000-1500</option>
+										<option value="fiftentotwentyfive">1500-2500</option>
+										<option value="twentyfivetofifty">2500-5000</option>
+										<option value="fiftytohundred">5000-10000</option>
+									</select>
+						
+										<button class="btn " type="submit" style="border-radius: 5px;background:#c4c4c4; color:black;margin-left:4px">Search</button>
+									</form>
+								</div>
+							</div>
+	   </div>
 
 
 <div class="container">

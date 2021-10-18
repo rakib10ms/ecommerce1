@@ -12,11 +12,14 @@ use DB;
 
 class FrontendController extends Controller
 {
- 
-    public function index(){
+
+  public function index(){
 
 
         $allCategories=Category::all();
+
+
+
         // dd($allCategories);
          $hotitems=HotItem::orderBy('id','desc')->limit(15)->get();
         $trendingCategories=DB::table('categories')->where('popular','1')->get();
@@ -51,8 +54,23 @@ class FrontendController extends Controller
 
     public function allProduct(){
       $allProduct=Product::all();
+      $allCategories=Category::all();
       // dd($allProduct);
-      return view('frontend.allProduct',compact('allProduct'));
+      return view('frontend.allProduct',compact('allProduct','allCategories'));
+    }
+
+
+    public function filterCategory(Request $request){
+
+      $cate_id=$request->cate_id;
+      $price=$request->price;
+       
+
+       dd($request->cate_id);
+
+        $results =Product::where('cate_id',$cate_id)->get();
+          // return view('frontend.allProduct',compact('results'));
+
     }
 
 }

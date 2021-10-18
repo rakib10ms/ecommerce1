@@ -14,7 +14,6 @@ class Category extends Model
        protected $fillable= ['name', 'slug', 'description','status','popular','image','meta_tittle','meta_description','meta_keywords']; 
 
       public function products(){
-        // return $this->hasMany('App\Models\Product','cate_id','id');
-        return $this->hasMany('Product::class');
+        return $this->hasMany(Product::class);
     }
 }

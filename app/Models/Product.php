@@ -11,8 +11,7 @@ class Product extends Model
      protected $table = 'products';
       protected $fillable= ['cate_id', 'slug', 'small_description','description','original_price','selling_price','image','qty','tax','status','trending','meta_tittle','meta_description','meta_keywords']; 
 
-    public function category(){
-        // return $this->belongsTo('App\Models\Category','id');   
-        return $this->belongsTo('Category::class');   
-     }
+   public function products(){
+        return $this->belongsTo(Category::class);
+    }
 }

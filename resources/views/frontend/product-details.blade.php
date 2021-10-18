@@ -267,44 +267,52 @@
   
 <div class="container">
 	<div class="row">
+		<div class="col-md-12 d-flex justify-content-between">	
+
+
+			<div class="col-md-4 border-right">
+	      <div class="image">
+	      	<img src="{{asset('assets/uploads/hot-item/' .$productDetails->image)}}" class="w-100">
+	      	</div>
+		</div>
+		<div class="col-md-8">
+			<input type="hidden" value="{{$productDetails->id}}" class="prod_id">
+			<h2 class="mb-0"> 
+           {{$productDetails->name}}
+           <label class="float-end badge bg-danger">  Trending</label>
+         </h2>
+         <hr>
+         <div class="d-flex">
+         <label class="me-3 float-start">Original Price: <s> Taka {{$productDetails->original_price}} </s> 
+         </label> 
+         <label class="me-3 float-end">Selling Price: <b> Taka {{$productDetails->selling_price}} </b> </label>
+       </div>
+
+         <p class="mt-3">
+         	{{$productDetails->description}}
+         </p>
+
+         <div class="row mt-2">
+         
+         		<label class="d-block"> Quantity </label>
+	      <div class=" input-group  ">
+         	
+         		<span class=" decrement-btn"> <b> - </b>
+         			<input type="text" name="quantity qty-input"  value="1"  class="qty-input">
+         		<span class="increment-btn"> <b> + </b>
+         		
+       </div class="mt-2">
+   
+         			<button type="submit" class="btn btn-success float-start"> <i class="fa fa-heart"> </i>Add to Wishlist </button>		
+         			<button type="submit" class="btn btn-primary float-end addToCartBtn"> <i class="fa fa-heart "> </i>Add to Cart </button>
+         
+         </div>
+       </div>
 	
-		<div class="card shadow-lg p-3 mb-5 bg-white rounded">
-			<div class="col-md-12 d-flex">
-	            <div class="single-product">
-              <div class="product-img">
-                  <a href="{{route('product-details',$item->slug)}}">
-
-                  <img class="default-img" src="{{asset('assets/uploads/hot-item/'.$item->image)}}"  alt="#">
-                  <img class="hover-img"src="{{asset('assets/uploads/hot-item/'.$item->image)}}" alt="#">
-                      <span class="out-of-stock">Hot </span>
-                       <span class="out-of-stock bg-info">New </span>
-
-
-                <div class="button-head">
-                  <div class="product-action">
-                    <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                    <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-                  </div>
-                  <div class="product-action-2">
-                    <a title="Add to cart" href="#">Add to cart</a>
-                  </div>
-                </div>
-              </div>
-              <div class="product-content">
-                <h3><a href="">{{$item->small_description}}</a></h3>
-                <div class="product-price">
-                  <span class="old">{{$item->original_price}}</span>
-                  <span>{{$item->selling_price}}</span>
-                </div>
-              </div>
-            </div>
-</a>
-			
 		</div>
 	</div>
 </div>
-</div>
+
 
 	
 
@@ -341,65 +349,64 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-	$.ajaxSetup({
-		    headers: {
-		        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-		    }
-		});
+
+	// $.ajaxSetup({
+	// 	    headers: {
+	// 	        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	// 	    }
+	// 	});
 
 
-		$('.addToCartBtn').click(function(e){
-			e.preventDefault();
+	// 	$('.addToCartBtn').click(function(e){
+	// 		e.preventDefault();
+
 	
-			var product_id=$('.prod_id').val();
-			var product_qty=$('.qty-input').val();
+	// 		var product_id=$('.prod_id').val();
+	// 		var product_qty=$('.qty-input').val();
 
-			alert(product_qty);
-			alert(product_id);
-
-			var url="{{ url('/add-to-cart')}}";
+	// 		var url="{{ url('/add-to-cart')}}";
 		
 
 		
-				$.ajax({
-					type:"post",
-					url:url,
-					dataType: "json",
-					 cache: false,
+	// 			$.ajax({
+	// 				type:"post",
+	// 				url:url,
+	// 				dataType: "json",
+	// 				 cache: false,
 
-					data:{
-						product_id:product_id,
-						product_qty:product_qty
-					},
-					success:function(response){
-              if(response.success){
-                  alert(response.status) ;
-              }else{
-                  alert("Error");
-              }
-           },
-           error:function(error){
-              console.log(error)
-           }
-				});
-
-
-		});
+	// 				data:{
+	// 					product_id:product_id,
+	// 					product_qty:product_qty
+	// 				},
+	// 				success:function(response){
+ //              if(response.success){
+ //                  alert(response.status) ;
+ //              }else{
+ //                  alert("Error");
+ //              }
+ //           },
+ //           error:function(error){
+ //              console.log(error)
+ //           }
+	// 			});
 
 
+	// 	});
 
 
-		$('.increment-btn').click(function(e){
+
+				$('.increment-btn').click(function(e){
 			e.preventDefault();
 			var inc_value=$('.qty-input').val();
 			var value=Number(inc_value);
+
 
 			if(value<50){
 				value=value+1;
 				$('.qty-input').val(value);
 			}
 
-		})
+		});
 
 			$('.decrement-btn').click(function(e){
 			e.preventDefault();
@@ -411,6 +418,13 @@
 				$('.qty-input').val(value);
 			}
 
-		})
+		});
 	});
+
+
+
+
+
+
+
 </script>
