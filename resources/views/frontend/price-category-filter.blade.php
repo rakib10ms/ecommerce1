@@ -1,4 +1,6 @@
 @include('frontend.layouts.header')
+
+
 <body class="js">
 	
 	<!-- Preloader -->
@@ -72,7 +74,7 @@
 						<div class="col-lg-2 col-md-2 col-12">
 							<!-- Logo -->
 							<div class="logo">
-								<a href="{{url('/')}}"><img src="{{asset('frontend/images/logo.png')}}" alt="logo">
+              <a href="{{url('/')}}"><img src="{{asset('frontend/images/logo.png')}}" alt="logo"></a>
 							</div>
 							<!--/ End Logo -->
 							<!-- Search Form -->
@@ -90,23 +92,8 @@
 							<!--/ End Search Form -->
 							<div class="mobile-nav"></div>
 						</div>
-						<div class="col-lg-8 col-md-7 col-12">
-							<div class="search-bar-top">
-								<div class="search-bar">
-									<select>
-										<option selected="selected">All Category</option>
-										<option>watch</option>
-										<option>mobile</option>
-										<option>kid’s item</option>
-									</select>
-									<form>
-										<input name="search" placeholder="Search Products Here....." type="search">
-										<button class="btnn"><i class="ti-search"></i></button>
-									</form>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-3 col-12">
+				
+						<div class="col-lg-10 col-md-3 col-12">
 							<div class="right-bar">
 								<!-- Search Form -->
 								<div class="sinlge-bar">
@@ -173,13 +160,8 @@
 															<li><a href="checkout.html">Checkout</a></li>
 														</ul>
 													</li>
-													<li><a href="#">Pages</a></li>									
-													<li><a href="#">Blog<i class="ti-angle-down"></i></a>
-														<ul class="dropdown">
-															<li><a href="blog-single-sidebar.html">Blog Single Sidebar</a></li>
-														</ul>
-													</li>
-													<li><a href="contact.html">Contact Us</a></li>
+												
+													<li><a href="{{url('contact-us')}}">Contact Us</a></li>
 												</ul>
 											</div>
 										</div>
@@ -203,7 +185,7 @@
 					<div class="bread-inner">
 						<ul class="bread-list">
 							<li><a href="{{url('/')}}">Home<i class="ti-arrow-right"></i></a></li>
-							<li class="active"><a href="blog-single.html">Contact</a></li>
+							<li class="active"><a href="{{url('/all-product')}}">Back</a></li>
 						</ul>
 					</div>
 				</div>
@@ -212,123 +194,62 @@
 	</div>
 	<!-- End Breadcrumbs -->
   
-	<!-- Start Contact -->
-	<section id="contact-us" class="contact-us section">
-		<div class="container">
-				<div class="contact-head">
-					<div class="row">
-						<div class="col-lg-8 col-12">
-							<div class="form-main">
-								<div class="title">
-									<h4>Get in touch</h4>
-									<h3>Write us a message</h3>
-								</div>
-								  @if(Session::has('success'))
-			                        <div class="alert alert-success">
-			                            {{ Session::get('success') }}
-			                            @php
-			                                Session::forget('success');
-			                            @endphp
-			                        </div>
-			                        @endif
 
-								<form class="form" method="POST" action="{{route('contact-us.store')}}">
-									@csrf
-									<div class="row">
-										<div class="col-lg-6 col-12">
-											<div class="form-group">
-												<label>Your Name<span>*</span></label>
-												<input name="name" type="text" placeholder="">
-												 @if ($errors->has('name'))
-				                                    <span class="text-danger">{{ $errors->first('name') }}</span>
-				                                @endif
-											</div>
-										</div>
-										<div class="col-lg-6 col-12">
-											<div class="form-group">
-												<label>Your Subjects<span>*</span></label>
-												<input name="subject" type="text" placeholder="">
-											</div>
-											  @if ($errors->has('subject'))
-                                            <span class="text-danger">{{ $errors->first('subject') }}</span>
-                                        @endif
-										</div>
-										<div class="col-lg-6 col-12">
-											<div class="form-group">
-												<label>Your Email<span>*</span></label>
-												<input name="email" type="email" placeholder="">
 
-											</div>	
-												 @if ($errors->has('email'))
-		                                            <span class="text-danger">{{ $errors->first('email') }}</span>
-		                                        @endif
-										</div>
-										<div class="col-lg-6 col-12">
-											<div class="form-group">
-												<label>Your Phone<span>*</span></label>
-												<input name="phone" type="text" placeholder="">
-											</div>	
-											 @if ($errors->has('phone'))
-                                            <span class="text-danger">{{ $errors->first('phone') }}</span>
-                                        @endif
-										</div>
-										<div class="col-12">
-											<div class="form-group message">
-												<label>your message<span>*</span></label>
-												<textarea name="message" placeholder=""></textarea>
-											</div>
-											  @if ($errors->has('message'))
-                                            <span class="text-danger">{{ $errors->first('message') }}</span>
-                                        @endif
-										</div>
-										<div class="col-12">
-											<div class="form-group button">
-												<button type="submit" class="btn ">Send Message</button>
-											</div>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
-						<div class="col-lg-4 col-12">
-							<div class="single-head">
-								<div class="single-info">
-									<i class="fa fa-phone"></i>
-									<h4 class="title">Call us Now:</h4>
-									<ul>
-										<li>+123 456-789-1120</li>
-										<li>+522 672-452-1120</li>
-									</ul>
-								</div>
-								<div class="single-info">
-									<i class="fa fa-envelope-open"></i>
-									<h4 class="title">Email:</h4>
-									<ul>
-										<li><a href="mailto:info@yourwebsite.com">info@yourwebsite.com</a></li>
-										<li><a href="mailto:info@yourwebsite.com">support@yourwebsite.com</a></li>
-									</ul>
-								</div>
-								<div class="single-info">
-									<i class="fa fa-location-arrow"></i>
-									<h4 class="title">Our Address:</h4>
-									<ul>
-										<li>KA-62/1, Travel Agency, 45 Grand Central Terminal, New York.</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-	</section>
-	<!--/ End Contact -->
-	
-	<!-- Map Section -->
-<!-- 	<div class="map-section">
-		<div id="myMap"></div>
-	</div> -->
-	<!--/ End Map Section -->
-	
+
+
+<div class="container">
+    <div class="tab-single">
+                    <div class="row">
+                    	@foreach($result as $product)
+                      <div class="col-xl-3 col-lg-4 col-md-4 col-12">
+                        <div class="single-product">
+                          <div class="product-img">
+                            <a href="product-details.html">
+                              <img class="default-img" src="{{asset('assets/uploads/products/'.$product->image)}}" alt="#">
+                              <img class="hover-img" src="{{asset('assets/uploads/products/'.$product->image)}}" alt="#">
+<!--                               <span class="out-of-stock">Hot</span>
+ -->                              <span class="new">new</span>
+                            </a>
+                            <div class="button-head">
+                              <div class="product-action">
+                                <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                                <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                                <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+                              </div>
+                              <div class="product-action-2">
+                                <a title="Add to cart" href="#">Add to cart</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="product-content">
+                            <h3><a href="product-details.html">{{$product->small_description}}</a></h3>
+                            <div class="product-price d-flex justify-content-between mt-2">
+                              <span class="float-start badge badge-success"><s>{{$product->original_price}}</s></span>
+                              <span class="float-end badge badge-danger">{{$product->selling_price}} </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      @endforeach
+               
+        
+     
+                    </div>
+                  </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
 	<!-- Start Shop Newsletter  -->
 	<section class="shop-newsletter section">
 		<div class="container">
@@ -354,3 +275,4 @@
 	<!-- End Shop Newsletter -->
 	
 @include('frontend.layouts.footer')
+

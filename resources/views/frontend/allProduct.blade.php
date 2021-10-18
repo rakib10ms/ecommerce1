@@ -191,7 +191,7 @@
     <div class="col-md-12  m-4">
 							<div class="search-bar-top">
 								<div class="search-bar">
-									<form action="" method="GET"  class="d-flex">
+									<form action="{{route('price-category-filter')}}" method="GET"  class="d-flex">
 									<select name="cate_id">
 										<option selected="selected">All Category</option>
 										@foreach($allCategories as $category)

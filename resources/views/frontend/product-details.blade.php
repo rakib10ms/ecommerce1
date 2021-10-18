@@ -49,6 +49,8 @@
     <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
  
 </head>
 
@@ -282,28 +284,30 @@
            <label class="float-end badge bg-danger">  Trending</label>
          </h2>
          <hr>
-         <div class="d-flex">
+         <div class="d-flex justify-content-between">
          <label class="me-3 float-start">Original Price: <s> Taka {{$productDetails->original_price}} </s> 
          </label> 
-         <label class="me-3 float-end">Selling Price: <b> Taka {{$productDetails->selling_price}} </b> </label>
+         <label class="me-3 float-end"><b>Selling Price:  Taka {{$productDetails->selling_price}} </b> </label>
        </div>
 
          <p class="mt-3">
+         	Description:
          	{{$productDetails->description}}
          </p>
 
-         <div class="row mt-2">
+         <div class="row ">
          
          		<label class="d-block"> Quantity </label>
-	      <div class=" input-group  ">
+	      <div class="input-group  ">
          	
-         		<span class=" decrement-btn"> <b> - </b>
-         			<input type="text" name="quantity qty-input"  value="1"  class="qty-input">
+         		<span class="decrement-btn"> <b> - </b>
+         			<input type="text" name="  "  value="1"  class="qty-input my-3" />
          		<span class="increment-btn"> <b> + </b>
+         		</span>
          		
-       </div class="mt-2">
+       </div>
    
-         			<button type="submit" class="btn btn-success float-start"> <i class="fa fa-heart"> </i>Add to Wishlist </button>		
+         			<button type="submit" class="btn btn-success mx-2"> <i class="fa fa-heart"> </i>Add to Wishlist </button>		
          			<button type="submit" class="btn btn-primary float-end addToCartBtn"> <i class="fa fa-heart "> </i>Add to Cart </button>
          
          </div>
@@ -312,14 +316,6 @@
 		</div>
 	</div>
 </div>
-
-
-	
-
-	
-
-
-
 
 	<!-- Start Shop Newsletter  -->
 	<section class="shop-newsletter section">
@@ -347,81 +343,69 @@
 	
 @include('frontend.layouts.footer')
 
+
 <script type="text/javascript">
 	$(document).ready(function(){
-
-	// $.ajaxSetup({
-	// 	    headers: {
-	// 	        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-	// 	    }
-	// 	});
-
-
-	// 	$('.addToCartBtn').click(function(e){
-	// 		e.preventDefault();
-
-	
-	// 		var product_id=$('.prod_id').val();
-	// 		var product_qty=$('.qty-input').val();
-
-	// 		var url="{{ url('/add-to-cart')}}";
-		
-
-		
-	// 			$.ajax({
-	// 				type:"post",
-	// 				url:url,
-	// 				dataType: "json",
-	// 				 cache: false,
-
-	// 				data:{
-	// 					product_id:product_id,
-	// 					product_qty:product_qty
-	// 				},
-	// 				success:function(response){
- //              if(response.success){
- //                  alert(response.status) ;
- //              }else{
- //                  alert("Error");
- //              }
- //           },
- //           error:function(error){
- //              console.log(error)
- //           }
-	// 			});
-
-
-	// 	});
-
-
-
-				$('.increment-btn').click(function(e){
+	$('.increment-btn').click(function(e){
 			e.preventDefault();
 			var inc_value=$('.qty-input').val();
-			var value=Number(inc_value);
-
+			var value=parseInt(inc_value,10);
+			value=isNaN(value) ? 0 : value;
 
 			if(value<50){
-				value=value+1;
+				value++;
 				$('.qty-input').val(value);
 			}
 
 		});
 
-			$('.decrement-btn').click(function(e){
+
+	$.ajaxSetup({
+		    headers: {
+		        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    }
+		});
+
+
+		$('.addToCartBtn').click(function(e){
 			e.preventDefault();
-			var inc_value=$('.qty-input').val();
-			var value=Number(inc_value);
 
-			if(value>1){
-				value=value-1;
-				$('.qty-input').val(value);
-			}
+	
+			var product_id=$('.prod_id').val();
+			var product_qty=$('.qty-input').val();
+
+			var url="{{ url('/add-to-cart')}}";
+		
+
+		
+				$.ajax({
+					type:"post",
+					url:url,
+					dataType: "json",
+					 cache: false,
+
+					data:{
+						product_id:product_id,
+						product_qty:product_qty
+					},
+					success:function(response){
+              if(response.success){
+                  alert(response.status) ;
+              }else{
+                  alert("Error");
+              }
+           },
+           error:function(error){
+              console.log(error)
+           }
+				});
+
 
 		});
-	});
 
 
+
+		
 
 
 

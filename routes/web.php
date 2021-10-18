@@ -87,7 +87,7 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
  Route::get('/all-product', 'Frontend\FrontendController@allProduct')->name('all-product');
 
  //all-producuts-filter
- Route::get('/all-product-filter', 'Frontend\FrontendController@filterCategory')->name('filter-category');
+ Route::get('/all-product-filter', 'Frontend\FrontendController@filterCategory')->name('price-category-filter');
 
 
 

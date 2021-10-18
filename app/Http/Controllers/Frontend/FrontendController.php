@@ -65,8 +65,52 @@ class FrontendController extends Controller
       $cate_id=$request->cate_id;
       $price=$request->price;
        
+      if($price=='onetofive'){
+        $min_price=100;
+        $max_price=500;
+        $result=Product::where('cate_id',$cate_id)->whereBetween('selling_price',[$min_price, $max_price])->get();
+        return view('frontend.price-category-filter',compact('result'));
+      }
+     
+      else if($price=='fivetoten'){
+        $min_price=500;
+        $max_price=1000;
+        $result=Product::where('cate_id',$cate_id)->whereBetween('selling_price',[$min_price, $max_price])->get();
+                return view('frontend.price-category-filter',compact('result'));
 
-       dd($request->cate_id);
+      }
+      else if($price=='tentofiften'){
+        $min_price=1000;
+        $max_price=1500;
+        $result=Product::where('cate_id',$cate_id)->whereBetween('selling_price',[$min_price, $max_price])->get();
+                return view('frontend.price-category-filter',compact('result'));
+
+      }
+      else if($price=='fiftentotwentyfive'){
+        $min_price=1500;
+        $max_price=2500;
+        $result=Product::where('cate_id',$cate_id)->whereBetween('selling_price',[$min_price, $max_price])->get();
+                return view('frontend.price-category-filter',compact('result'));
+
+      }
+     else if($price=='twentyfivetofifty'){
+
+        $min_price=2500;
+        $max_price=5000;
+        $result=Product::where('cate_id',$cate_id)->whereBetween('selling_price',[$min_price, $max_price])->get();
+                return view('frontend.price-category-filter',compact('result'));
+
+      }
+
+      else if($price=='fiftytohundred'){
+
+        $min_price=5000;
+        $max_price=10000;
+        $result=Product::where('cate_id',$cate_id)->whereBetween('selling_price',[$min_price, $max_price])->get();
+                return view('frontend.price-category-filter',compact('result'));
+
+      }
+
 
         $results =Product::where('cate_id',$cate_id)->get();
           // return view('frontend.allProduct',compact('results'));
