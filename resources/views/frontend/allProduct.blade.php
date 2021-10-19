@@ -192,14 +192,14 @@
 							<div class="search-bar-top">
 								<div class="search-bar">
 									<form action="{{route('price-category-filter')}}" method="GET"  class="d-flex">
-									<select name="cate_id">
+									<select name="cate_id" required="">
 										<option selected="selected">All Category</option>
 										@foreach($allCategories as $category)
 										<option value="{{$category->id}}">{{$category->name}}</option>
 									  @endforeach
 									</select>
 
-											<select name="price">
+											<select name="price" required="">
 										<option selected="selected">Price</option>
 										<option value="onetofive">100-500</option>
 										<option value="fivetoten">500-1000</option>

@@ -42,19 +42,8 @@
           </a>
         </li>
 
-          <li class="nav-item  {{Request::is('best-products')?'active':''}}">
-          <a class="nav-link" href="{{url('best-products')}}">
-            <i class="material-icons">category</i>
-            <p> Best Products</p>
-          </a>
-        </li>
 
-           <li class="nav-item  {{Request::is('hot-item')?'active':''}}">
-          <a class="nav-link" href="{{url('hot-item')}}">
-            <i class="material-icons">Hot</i>
-            <p> Hot Items</p>
-          </a>
-        </li>
+     
 
            <li class="nav-item  {{Request::is('all-subscriber')?'active':''}}">
           <a class="nav-link" href="{{url('all-subscriber')}}">

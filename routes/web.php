@@ -40,20 +40,7 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
     Route::post('/product-update/{id}', 'Admin\ProductController@update');
     Route::get('/product-delete/{id}', 'Admin\ProductController@destroy');
 
-    Route::get('/best-products', 'Admin\BestProductController@index');
-    Route::get('/add-best-products', 'Admin\BestProductController@create')->name('add-best-product');
-    Route::post('/store-best-products', 'Admin\BestProductController@store')->name('store-best-product');
-     Route::get('/edit-best-products/{id}', 'Admin\BestProductController@edit')->name('edit-best-product');
-      Route::post('/update-best-products', 'Admin\BestProductController@update')->name('update-best-product');
-     Route::get('/delete-best-products/{id}', 'Admin\BestProductController@destroy')->name('delete-best-product');
-   
-
-
-
-
-    Route::get('/hot-item', 'Admin\HotItemController@index')->name('hot-item');
-    Route::get('/add-hot-item', 'Admin\HotItemController@create')->name('add-hot-item');
-    Route::post('/store-hot-item', 'Admin\HotItemController@store')->name('store-hot-item');
+    
 
 
     //subscriber

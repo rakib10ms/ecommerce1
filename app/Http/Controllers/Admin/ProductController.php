@@ -33,7 +33,7 @@ class ProductController extends Controller
             'slug' => 'required|unique:products',
             'name' => 'required|unique:products',
             'cate_id' => 'required',
-            'description' => 'required',
+            'small_description' => 'required',
             'original_price' => 'required',
             'selling_price' => 'required',
             'tax' => 'required',
@@ -57,7 +57,6 @@ class ProductController extends Controller
         $products->cate_id=$request->input('cate_id');
         $products->name=$request->input('name');
         $products->slug=$request->input('slug');
-        $products->description=$request->input('description');
         $products->small_description=$request->input('small_description');
         $products->original_price=$request->input('original_price');
         $products->selling_price=$request->input('selling_price');
@@ -65,6 +64,10 @@ class ProductController extends Controller
         $products->qty=$request->input('qty');
         $products->status=$request->input('status')==TRUE?'1':'0';
         $products->trending=$request->input('trending')==TRUE?'1':'0';
+        $products->trending=$request->input('hot_item')==TRUE?'1':'0';
+        $products->trending=$request->input('top_viewed')==TRUE?'1':'0';
+        $products->trending=$request->input('on_sale')==TRUE?'1':'0';
+        $products->trending=$request->input('best_seller')==TRUE?'1':'0';
         $products->meta_tittle=$request->input('meta_tittle');
         $products->meta_keywords=$request->input('meta_keywords');
         $products->meta_description=$request->input('meta_description');

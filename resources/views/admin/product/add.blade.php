@@ -41,11 +41,7 @@
                     <label> Small Description <span> *</span></label>
                         <textarea  rows="3" class="form-control" name="small_description" > </textarea>
                 </div>
-                <div class="col-md-12 mb-3">
-                    <label>Description <span> *</span></label>
-                        <textarea name="description" rows="3" class="form-control" > </textarea>
-                </div>
-          
+           
                 <div class="col-md-6 mb-3">
                     <label>Original Price</label>
                     <input type="number" class="form-control"  name="original_price">
@@ -70,6 +66,26 @@
                 <div class="col-md-6 mb-3">
                     <label>Trending </label>
                     <input type="checkbox" name="trending">
+                </div>
+
+                 <div class="col-md-6 mb-3">
+                    <label>On Sale </label>
+                    <input type="checkbox" name="on_sale">
+                </div>
+
+                 <div class="col-md-6 mb-3">
+                    <label>Top Viewed </label>
+                    <input type="checkbox" name="top_viewed">
+                </div>
+
+                 <div class="col-md-6 mb-3">
+                    <label>Hot Item </label>
+                    <input type="checkbox" name="hot_item">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>Best Seller </label>
+                    <input type="checkbox" name="best_seller">
                 </div>
 
                  <div class="col-md-12 mb-3">

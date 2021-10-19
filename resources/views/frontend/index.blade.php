@@ -321,7 +321,7 @@
                     <h1 class=""><span>UP TO 50% OFF </span>Shirt For Man</h1>
                     <p>Maboriosam in a nesciung eget magnae <br> dapibus disting tloctio in the find it pereri <br> odiy maboriosm.</p>
                     <div class="button">
-                      <a href="#" class="btn">Shop Now!</a>
+                      <a href="{{url('/all-product')}}" class="btn">Shop Now!</a>
                     </div>
                   </div>
                 </div>
@@ -1739,14 +1739,11 @@
               <div class="product-img">
                   <a href="{{route('product-details',$item->slug)}}">
 
-                  <img class="default-img" src="{{asset('assets/uploads/hot-item/'.$item->image)}}"  alt="#">
-                  <img class="hover-img"src="{{asset('assets/uploads/hot-item/'.$item->image)}}" alt="#">
+                  <img class="default-img" src="{{asset('assets/uploads/products/'.$item->image)}}"  alt="#">
+                  <img class="hover-img"src="{{asset('assets/uploads/products/'.$item->image)}}" alt="#">
                       @if ($item->status==1)
-                      <span class="out-of-stock">Hot </span>
-                      @elseif ($item->status==2)
-                       <span class="out-of-stock bg-info">New </span>
-                      @else
-
+                      <span class="new">Hot </span>
+                      
                       @endif
                  </a>
                 <div class="button-head">
@@ -1801,7 +1798,7 @@
             <div class="row">
               <div class="col-lg-6 col-md-6 col-12">
                 <div class="list-image overlay">
-                  <img src="{{asset('assets/uploads/best_products/'.$item->image)}}" alt="#">
+                  <img src="{{asset('assets/uploads/products/'.$item->image)}}" alt="#">
                   <a href="" class="buy"><i class="fa fa-shopping-bag"></i></a>
                 </div>
               </div>
