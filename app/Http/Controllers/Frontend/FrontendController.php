@@ -15,10 +15,6 @@ class FrontendController extends Controller
 
 
         $allCategories=Category::all();
-
-
-
-        // dd($allCategories);
          $hotitems=DB::table('products')->orderBy('id','desc')->where('hot_item','1')->where('status','1')->limit(15)->get();
          $trendingCategories=DB::table('categories')->where('popular','1')->get();
         $on_sale=DB::table('products')->orderBy('id','desc')->where('on_sale','1')->where('status','1')->limit(3)->get();
@@ -44,8 +40,7 @@ class FrontendController extends Controller
 
     public function productDetails($slug){
 
-      $productDetails=HotItem::where('slug',$slug)->first();
-      // dd($productDetails);
+      $productDetails=Product::where('slug',$slug)->first();
       return view('frontend.product-details',compact('productDetails'));
     }
 

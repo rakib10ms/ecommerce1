@@ -357,14 +357,14 @@
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                   
       
-         <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#man" role="tab">Man</a></li>
+         <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#man" role="tab" aria-selected="true">Man</a></li>
 
    
-                  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#women" role="tab">Woman</a></li>
-                  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#kids" role="tab">Kids</a></li>
-                  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#accessories" role="tab">Accessories</a></li>
-                  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#essential" role="tab">Essential</a></li>
-                  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#prices" role="tab">Prices</a></li>
+                  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#women" role="tab" aria-selected="false">Woman</a></li>
+                  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#kids" role="tab" aria-selected="false">Kids</a></li>
+                  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#accessories" role="tab" aria-selected="false">Accessories</a></li>
+                  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#essential" role="tab" aria-selected="false">Essential</a></li>
+                  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#prices" role="tab" aria-selected="false">Prices</a></li>
                 </ul>
                 <!--/ End Tab Nav -->
               </div>
@@ -376,12 +376,10 @@
                 <!-- Start Single Tab -->
                
 
-                <div class="tab-pane fade show active" id="" class="active" role="tabpanel">
+                <div class="tab-pane fade show active" id="man" class="active" role="tabpanel">
                   <div class="tab-single">
                     <div class="row">
                       <div class="col-xl-3 col-lg-4 col-md-4 col-12">
-
-        
                         <div class="single-product">
                           <div class="product-img">
                             <a href="product-details.html">
@@ -406,10 +404,9 @@
                             </div>
                           </div>
                         </div>
-                      
-
-
                       </div>
+
+
                       <div class="col-xl-3 col-lg-4 col-md-4 col-12">
                         <div class="single-product">
                           <div class="product-img">
@@ -1712,6 +1709,8 @@
         </div>
             </div>
     </div>
+
+
   <!-- End Product Area -->
   
   <!-- Start Midium Banner  -->
@@ -1758,7 +1757,7 @@
                 </div>
               </div>
               <div class="product-content">
-                <h3><a href="">{{$item->small_description}}</a></h3>
+              <h3><a href="">{{substr($item->small_description,0,50)}}....</a></h3>
                 <div class="product-price">
                   <span class="old">{{$item->original_price}}</span>
                   <span>{{$item->selling_price}}</span>
@@ -1804,7 +1803,7 @@
               </div>
               <div class="col-lg-6 col-md-6 col-12 no-padding">
                 <div class="content">
-                  <h4 class="title"><a href="#">{{$item->small_description}}</a></h4>
+                  <h4 class="title"><a href="">{{substr($item->small_description,0,50)}}....</a></h4>
                   <p class="price with-discount">{{$item->selling_price}}</p>
                 </div>
               </div>
@@ -1832,7 +1831,7 @@
             <div class="row">
               <div class="col-lg-6 col-md-6 col-12">
                 <div class="list-image overlay">
-                  <img src="{{asset('assets/uploads/best_products/'.$item->image)}}" alt="#">
+                  <img src="{{asset('assets/uploads/products/'.$item->image)}}" alt="#">
                   <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
                 </div>
               </div>
@@ -1863,7 +1862,7 @@
             <div class="row">
               <div class="col-lg-6 col-md-6 col-12">
                 <div class="list-image overlay">
-                  <img src="{{asset('assets/uploads/best_products/'.$item->image)}}" alt="#">
+                  <img src="{{asset('assets/uploads/products/'.$item->image)}}" alt="#">
                   <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
                 </div>
               </div>

@@ -152,7 +152,7 @@
 											<div class="nav-inner">	
 												<ul class="nav main-menu menu navbar-nav">
 													<li class="active"><a href="{{url('/')}}">Home</a></li>
-													<li><a href="#">Product</a></li>												
+													<li><a href="{{route('all-product')}}">Product</a></li>												
 													<li><a href="#">Service</a></li>
 													<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">
@@ -188,7 +188,7 @@
   
 
 
-    <div class="col-md-12  m-4">
+    <div class="col-md-12 m-3 d-flex justify-content-center">
 							<div class="search-bar-top">
 								<div class="search-bar">
 									<form action="{{route('price-category-filter')}}" method="GET"  class="d-flex">
@@ -199,7 +199,7 @@
 									  @endforeach
 									</select>
 
-											<select name="price" required="">
+									<select name="price" required="" class="mx-1">
 										<option selected="selected">Price</option>
 										<option value="onetofive">100-500</option>
 										<option value="fivetoten">500-1000</option>
@@ -208,8 +208,11 @@
 										<option value="twentyfivetofifty">2500-5000</option>
 										<option value="fiftytohundred">5000-10000</option>
 									</select>
+
+									<div>
 						
-										<button class="btn " type="submit" style="border-radius: 5px;background:#c4c4c4; color:black;margin-left:4px">Search</button>
+										<button class=" btn btn-info" type="submit" >Search</button>
+									</div>
 									</form>
 								</div>
 							</div>
@@ -223,7 +226,7 @@
                       <div class="col-xl-3 col-lg-4 col-md-4 col-12">
                         <div class="single-product">
                           <div class="product-img">
-                            <a href="product-details.html">
+                            <a href="{{route('product-details',$product->slug)}}">
                               <img class="default-img" src="{{asset('assets/uploads/products/'.$product->image)}}" alt="#">
                               <img class="hover-img" src="{{asset('assets/uploads/products/'.$product->image)}}" alt="#">
 <!--                               <span class="out-of-stock">Hot</span>

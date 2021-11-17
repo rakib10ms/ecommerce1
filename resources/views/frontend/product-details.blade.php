@@ -48,7 +48,7 @@
   <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
  
@@ -220,7 +220,7 @@
 											<div class="nav-inner">	
 												<ul class="nav main-menu menu navbar-nav">
 													<li class="active"><a href="{{url('/')}}">Home</a></li>
-													<li><a href="#">Product</a></li>												
+													<li><a href="{{route('all-product')}}">Product</a></li>												
 													<li><a href="#">Service</a></li>
 													<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">
@@ -274,7 +274,7 @@
 
 			<div class="col-md-4 border-right">
 	      <div class="image">
-	      	<img src="{{asset('assets/uploads/hot-item/' .$productDetails->image)}}" class="w-100">
+	      	<img src="{{asset('assets/uploads/products/' .$productDetails->image)}}" class="w-100">
 	      	</div>
 		</div>
 		<div class="col-md-8">
@@ -373,10 +373,8 @@
 	
 			var product_id=$('.prod_id').val();
 			var product_qty=$('.qty-input').val();
-
+	
 			var url="{{ url('/add-to-cart')}}";
-		
-
 		
 				$.ajax({
 					type:"post",
@@ -389,26 +387,20 @@
 						product_qty:product_qty
 					},
 					success:function(response){
-              if(response.success){
+              if(response.status){
                   alert(response.status) ;
               }else{
                   alert("Error");
               }
            },
            error:function(error){
-              console.log(error)
+              alert("Product already added or something problem");
            }
 				});
 
 
-		});
-
-
-
-		
-
-
-
+		});		
+	});
 
 
 </script>

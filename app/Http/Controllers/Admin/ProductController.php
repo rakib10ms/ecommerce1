@@ -15,7 +15,6 @@ class ProductController extends Controller
     public function index(){
         $products=DB::table('products')->join('categories','products.cate_id' ,'=' ,'categories.id')->select('products.*','categories.name as cate_name')->orderBy('id','desc')->get();
      
-    // $products=Product::orderBy('id','desc')->get();
 
         return view('admin.product.index',compact('products'));
     }
@@ -35,6 +34,7 @@ class ProductController extends Controller
             'cate_id' => 'required',
             'small_description' => 'required',
             'original_price' => 'required',
+            'hot_item' => 'required',
             'selling_price' => 'required',
             'tax' => 'required',
             'qty' => 'required',
@@ -64,10 +64,10 @@ class ProductController extends Controller
         $products->qty=$request->input('qty');
         $products->status=$request->input('status')==TRUE?'1':'0';
         $products->trending=$request->input('trending')==TRUE?'1':'0';
-        $products->trending=$request->input('hot_item')==TRUE?'1':'0';
-        $products->trending=$request->input('top_viewed')==TRUE?'1':'0';
-        $products->trending=$request->input('on_sale')==TRUE?'1':'0';
-        $products->trending=$request->input('best_seller')==TRUE?'1':'0';
+        $products->hot_item=$request->input('hot_item')==TRUE?'1':'0';
+        $products->top_viewed=$request->input('top_viewed')==TRUE?'1':'0';
+        $products->on_sale=$request->input('on_sale')==TRUE?'1':'0';
+        $products->best_seller=$request->input('best_seller')==TRUE?'1':'0';
         $products->meta_tittle=$request->input('meta_tittle');
         $products->meta_keywords=$request->input('meta_keywords');
         $products->meta_description=$request->input('meta_description');
@@ -89,7 +89,6 @@ class ProductController extends Controller
 
 
     public function update(Request $request,$id){
-
         $products=Product::find($id);
         if($request->hasFile('image')){
             $file=$request->file('image');
@@ -110,10 +109,11 @@ class ProductController extends Controller
             $products->qty=$request->input('qty');
             $products->status=$request->input('status')==TRUE?'1':'0';
             $products->trending=$request->input('trending')==TRUE?'1':'0';
+            $products->hot_item=$request->input('hot_item')==TRUE?'1':'0';
             $products->meta_tittle=$request->input('meta_tittle');
             $products->meta_keywords=$request->input('meta_keywords');
             $products->meta_description=$request->input('meta_description');
-            $products->save();
+            $products->update();
             return redirect('/products')->with('status','product added successfully');
 
         }
@@ -130,10 +130,11 @@ class ProductController extends Controller
             $products->qty=$request->input('qty');
             $products->status=$request->input('status')==TRUE?'1':'0';
             $products->trending=$request->input('trending')==TRUE?'1':'0';
+           $products->hot_item=$request->input('hot_item')==TRUE?'1':'0';
             $products->meta_tittle=$request->input('meta_tittle');
             $products->meta_keywords=$request->input('meta_keywords');
             $products->meta_description=$request->input('meta_description');
-            $products->save();
+            $products->update();
     
         }
 

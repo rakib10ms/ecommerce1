@@ -152,7 +152,7 @@
 											<div class="nav-inner">	
 												<ul class="nav main-menu menu navbar-nav">
 													<li class="active"><a href="{{url('/')}}">Home</a></li>
-													<li><a href="#">Product</a></li>												
+													<li><a href="{{route('all-product')}}">Product</a></li>												
 													<li><a href="#">Service</a></li>
 													<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">
@@ -205,7 +205,7 @@
                       <div class="col-xl-3 col-lg-4 col-md-4 col-12">
                         <div class="single-product">
                           <div class="product-img">
-                            <a href="product-details.html">
+                            <a href="{{route('product-details',$product->slug)}}">
                               <img class="default-img" src="{{asset('assets/uploads/products/'.$product->image)}}" alt="#">
                               <img class="hover-img" src="{{asset('assets/uploads/products/'.$product->image)}}" alt="#">
 <!--                               <span class="out-of-stock">Hot</span>

@@ -75,20 +75,7 @@
             <div class="logo">
               <a href="{{url('/')}}"><img src="{{asset('frontend/images/logo.png')}}" alt="logo"></a>
             </div>
-            <!--/ End Logo -->
-            <!-- Search Form -->
-            <!-- <div class="search-top">
-              <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div> -->
-              <!-- Search Form -->
-             <!--  <div class="search-top">
-                <form class="search-form">
-                  <input type="text" placeholder="Search here..." name="search">
-                  <button value="search" type="submit"><i class="ti-search"></i></button>
-                </form>
-              </div> -->
-              <!--/ End Search Form -->
-<!--             </div>
- -->            <!--/ End Search Form -->
+      
             <div class="mobile-nav"></div>
           </div>
 
@@ -183,7 +170,7 @@
                     <div class="nav-inner"> 
                       <ul class="nav main-menu menu navbar-nav">
                           <li class="active"><a href="#">Home</a></li>
-                          <li><a href="#">Product</a></li>                        
+                          <li><a href="{{route('all-product')}}">Product</a></li>                        
                           <li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
                             <ul class="dropdown">
                               <li><a href="cart.html">Cart</a></li>

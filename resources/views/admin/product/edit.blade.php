@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-md-12 mb-3">
                     <label>Description <span> *</span></label>
-                        <textarea name="description" rows="3" class="form-control" >{{$editProduct->name}} </textarea>
+                        <textarea name="description" rows="3" class="form-control" >{{$editProduct->description}} </textarea>
                 </div>
           
                 <div class="col-md-6 mb-3">
@@ -70,6 +70,26 @@
                 <div class="col-md-6 mb-3">
                     <label>Trending </label>
                     <input type="checkbox" name="trending" {{$editProduct->trending==true ?'checked': ''}}>
+                </div>
+
+                    <div class="col-md-6 mb-3">
+                    <label>On Sale </label>
+                    <input type="checkbox" name="on_sale" {{$editProduct->on_sale==true ?'checked': ''}}>
+                </div>
+
+                 <div class="col-md-6 mb-3">
+                    <label>Top Viewed </label>
+                    <input type="checkbox" name="top_viewed" {{$editProduct->top_viewed==true ?'checked': ''}}>
+                </div>
+
+                 <div class="col-md-6 mb-3">
+                    <label>Hot Item </label>
+                    <input type="checkbox" name="hot_item" {{$editProduct->hot_item==true ?'checked': ''}}>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>Best Seller </label>
+                    <input type="checkbox" name="best_seller" {{$editProduct->best_seller==true ?'checked': ''}}>
                 </div>
 
                  <div class="col-md-12 mb-3">
