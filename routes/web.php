@@ -18,12 +18,17 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', 'Frontend\FrontendController@index');
 
+//admin_auth
+
+
+  Route::get('/admin/login', 'AdminAuth\loginController@showLoginForm');
+
+
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::group(['middleware' => ['auth','isAdmin']], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth','isAdmin']], function () {
 
     Route::get('/dashboard', 'Admin\FrontendController@index');
     Route::get('/categories', 'Admin\CategoryController@index');
