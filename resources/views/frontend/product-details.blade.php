@@ -175,7 +175,7 @@
 									<!-- Shopping Item -->
 									<div class="shopping-item">
 										<div class="dropdown-cart-header">
-											<span>2 Items</span>
+											<span>2</span>
 											<a href="#">View Cart</a>
 										</div>
 										<ul class="shopping-list">
@@ -343,6 +343,60 @@
 	
 @include('frontend.layouts.footer')
 
+
+<script type="text/javascript">
+		$(document).ready(function(){
+	$('.total-count').hover(function(e){
+	$.ajaxSetup({
+		    headers: {
+		        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    }
+		});
+
+
+					var url="{{ url('/show-cart')}}";
+		
+				$.ajax({
+					type:"get",
+					url:url,
+					 cache: false,
+
+					success:function(response){
+
+						 $('tbody').html('');
+          $.each(response.students,function(key,item){
+              $('tbody').append(
+                '<tr>\
+                <th scope="row">'+key+'</th>\
+                <td>'+item.id+'</td>\
+                <td>'+item.name+'</td>\
+                <td>'+item.email+'</td>\
+                <td>'+item.phone+'</td>\
+                <td>'+item.course+'</td>\
+                <td>\
+                  <button type="button" value="'+item.id+'" class="edit_student btn btn-info">Edit </button>\
+                  <button type="button" value="'+item.id+'" class=" delete_student btn btn-danger">Delete </button>\
+                </td>\
+              </tr>'
+              );
+            });
+      
+              if(response.status){
+                  alert(response.status) ;
+              }else{
+                  alert("Error");
+              }
+           },
+           error:function(error){
+              alert("Something problem");
+           }
+				});
+
+	
+			});
+});
+
+</script>
 
 <script type="text/javascript">
 	$(document).ready(function(){

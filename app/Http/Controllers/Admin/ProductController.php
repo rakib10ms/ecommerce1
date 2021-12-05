@@ -25,7 +25,6 @@ class ProductController extends Controller
 
     public function insert(Request $request){
 
-         // $validatedData = Validator::make($request->all(), [
               $request->validate([
 
             'image' => 'required|image',
@@ -33,8 +32,8 @@ class ProductController extends Controller
             'name' => 'required|unique:products',
             'cate_id' => 'required',
             'small_description' => 'required',
+            'description' => 'required',
             'original_price' => 'required',
-            'hot_item' => 'required',
             'selling_price' => 'required',
             'tax' => 'required',
             'qty' => 'required',
@@ -58,6 +57,7 @@ class ProductController extends Controller
         $products->name=$request->input('name');
         $products->slug=$request->input('slug');
         $products->small_description=$request->input('small_description');
+        $products->description=$request->input('description');
         $products->original_price=$request->input('original_price');
         $products->selling_price=$request->input('selling_price');
         $products->tax=$request->input('tax');

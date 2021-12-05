@@ -40,6 +40,11 @@
                 <div class="col-md-6 mb-3">
                     <label> Small Description <span> *</span></label>
                         <textarea  rows="3" class="form-control" name="small_description" > </textarea>
+                </div>   
+
+                  <div class="col-md-6 mb-3">
+                    <label> Description <span> *</span></label>
+                        <textarea  rows="3" class="form-control" name="description" > </textarea>
                 </div>
            
                 <div class="col-md-6 mb-3">

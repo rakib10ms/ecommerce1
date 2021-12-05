@@ -140,39 +140,8 @@
 				</div>
 			</div>
 			<!-- Header Inner -->
-			<div class="header-inner">
-				<div class="container">
-					<div class="cat-nav-head">
-						<div class="row">
-							<div class="col-12">
-								<div class="menu-area">
-									<!-- Main Menu -->
-									<nav class="navbar navbar-expand-lg">
-										<div class="navbar-collapse">	
-											<div class="nav-inner">	
-												<ul class="nav main-menu menu navbar-nav">
-													<li class="active"><a href="{{url('/')}}">Home</a></li>
-													<li><a href="{{route('all-product')}}">Product</a></li>												
-													<li><a href="#">Service</a></li>
-													<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
-														<ul class="dropdown">
-															<li><a href="cart.html">Cart</a></li>
-															<li><a href="checkout.html">Checkout</a></li>
-														</ul>
-													</li>
-												
-													<li><a href="{{url('contact-us')}}">Contact Us</a></li>
-												</ul>
-											</div>
-										</div>
-									</nav>
-									<!--/ End Main Menu -->	
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			@include('frontend.layouts.navbar')
+
 			<!--/ End Header Inner -->
 		</header>
 		<!--/ End Header -->

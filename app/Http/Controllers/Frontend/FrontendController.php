@@ -118,4 +118,16 @@ class FrontendController extends Controller
 
     }
 
+
+
+
+    public function check(){
+      $categories=Category::all();
+      return view('check',compact('categories'));
+    }
+    public function get($id){
+      $categories=Product::where('cate_id',$id)->get();
+    }
+
+  
 }

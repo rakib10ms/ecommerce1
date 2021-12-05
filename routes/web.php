@@ -81,8 +81,12 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
 
  Route::post('/add-to-cart', 'Frontend\CartController@addProduct');
  Route::get('/cart-products', 'Frontend\CartController@viewCartProduct');
+ Route::get('/show-cart', 'Frontend\CartController@showCartProduct');
 
 
+
+
+ Route::get('/check', 'Frontend\FrontendController@check');
 
 
 

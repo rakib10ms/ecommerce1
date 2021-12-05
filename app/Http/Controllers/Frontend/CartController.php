@@ -43,5 +43,13 @@ class CartController extends Controller
         $allItems=Cart::where('user_id',$user_id)->get();
         
     }
+
+    public function showCartProduct(){
+
+        $user_id=Auth::id();
+        $all=Cart::where('user_id',$user_id)->get();
+     return response()->json(['data' =>$all ]);
+
+    }
       
 }
