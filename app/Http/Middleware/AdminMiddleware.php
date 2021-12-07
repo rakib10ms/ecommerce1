@@ -17,21 +17,14 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next,$guard = null)
     {
-        switch($guard){
-            case 'admins':
-                if (Auth::guard($guard)->check()) {
+
+             if (Auth::guard('admin')->check()) {
                     return redirect()->route('admin.dashboard');
                 }
-                break;
 
-            default:
-                if (Auth::guard($guard)->check()) {
-                    return redirect('/');
-            }
-                break;
+         else if (Auth::guard('web')->check()){
+            return redirect('/');
+         }
          }
 
-
-  return $next($request);
-}
-}
+    }

@@ -5,7 +5,11 @@ namespace App\Http\Controllers\AdminAuth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+
 
 class LoginController extends Controller
 {
@@ -34,9 +38,6 @@ class LoginController extends Controller
     }
 
 
-    use AuthenticatesUsers;
-
-
 
     // use RedirectsUsers, ThrottlesLogins;
 
@@ -45,7 +46,7 @@ class LoginController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function showLoginForm()
+    public function adminLoginForm()
     {
         return view('adminauth.login');
     }
@@ -190,7 +191,7 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
-        $this->guard()->logout();
+        $this->guard('admin')->logout();
 
         $request->session()->invalidate();
 

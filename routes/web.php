@@ -1,8 +1,11 @@
 <?php
-
+namespace App\Http\Controllers;
 use App\Http\Controllers\Admin\FrontendController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+
+
 
 
 /*
@@ -21,16 +24,18 @@ Route::get('/', 'Frontend\FrontendController@index');
 //admin_auth
 
 
-  Route::get('/admin/login', 'AdminAuth\loginController@showLoginForm');
+Route::get('/admin/login', 'AdminAuth\loginController@adminLoginForm')->name('admin.login');
+Route::post('/admin/login', 'AdminAuth\loginController@login')->name('admin.login');
+Route::get('/admin/logout', 'AdminAuth\loginController@logout')->name('admin.logout');
 
 
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::group(['prefix' => 'admin', 'middleware' => ['auth','isAdmin']], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
-    Route::get('/dashboard', 'Admin\FrontendController@index');
+    Route::get('/dashboard', 'Admin\FrontendController@index')->name('admin.dashboard');
     Route::get('/categories', 'Admin\CategoryController@index');
     Route::get('/add-category', 'Admin\CategoryController@add');
     Route::post('/insert-category', 'Admin\CategoryController@insert');
